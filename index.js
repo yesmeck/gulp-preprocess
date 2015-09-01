@@ -11,7 +11,6 @@ module.exports = function (context, options) {
     if (file.isNull()) return callback(null, file); // pass along
     if (file.isStream()) return callback(new Error("gulp-preprocess: Streaming not supported"));
 
-    context.NODE_ENV = context.NODE_ENV || 'development';
     contents = file.contents.toString('utf8');
     contents = pp.preprocess(contents, context, options);
     file.contents = new Buffer(contents);
